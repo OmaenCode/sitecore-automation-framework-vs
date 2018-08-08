@@ -1,0 +1,23 @@
+{
+  "system": {
+    "hosting": "OnPrem",
+    "sitecoreMode": "XM"
+  },
+  "prefix": "",
+  "solr": {
+    "install": {
+      "version": "",
+      "installDir": "",
+      "hostName": "",
+      "port": "",
+      "serviceName": "",
+      "serviceDisplayName": "",
+      "serviceDescription": ""
+    },
+    "customCores": [
+      {
+        "name": ""
+      }
+    ]
+  }
+}
