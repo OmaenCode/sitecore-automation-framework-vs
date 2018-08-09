@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SAF.ItemTemplate.SSL")]
+[assembly: AssemblyTitle("SAF.ItemTemplates")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HP Inc.")]
-[assembly: AssemblyProduct("SAF.ItemTemplate.SSL")]
-[assembly: AssemblyCopyright("Copyright © HP Inc. 2018")]
+[assembly: AssemblyCompany("Rosen Petrov")]
+[assembly: AssemblyProduct("SAF.ItemTemplates")]
+[assembly: AssemblyCopyright("Copyright © Rosen Petrov 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f94eebf6-364b-4fb9-9af0-c2cfde3c095b")]
+[assembly: Guid("13aceaba-9ba2-42eb-ac61-3170396ed07f")]
 
 // Version information for an assembly consists of the following four values:
 //

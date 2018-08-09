@@ -3,7 +3,7 @@
   <TemplateData>
     <Name>XM Solr Install Configuration</Name>
     <Description>Solr configurations for Sitecore installation.</Description>
-    <Icon>TemplateIcon.ico</Icon>
+    <Icon>TemplateIcon.png</Icon>
     <TemplateID>35c05fdb-33b6-4e8d-b120-4560dd83eb90</TemplateID>
     <ProjectType>CSharp</ProjectType>
     <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>

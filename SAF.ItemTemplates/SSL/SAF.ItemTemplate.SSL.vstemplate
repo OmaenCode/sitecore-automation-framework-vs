@@ -3,7 +3,7 @@
   <TemplateData>
     <Name>SSL Sitecore Configuration</Name>
     <Description>SSL configuations for Sitecore installation.</Description>
-    <Icon>TemplateIcon.ico</Icon>
+    <Icon>TemplateIcon.png</Icon>
     <TemplateID>3270d299-578b-4844-bb37-61adcf3b9453</TemplateID>
     <ProjectType>CSharp</ProjectType>
     <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>

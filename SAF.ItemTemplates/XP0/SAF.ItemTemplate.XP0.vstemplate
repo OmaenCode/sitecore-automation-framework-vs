@@ -3,7 +3,7 @@
   <TemplateData>
     <Name>XP0 Sitecore Install Configuration</Name>
     <Description>XP0 configurations for Sitecore installation.</Description>
-    <Icon>TemplateIcon.ico</Icon>
+    <Icon>TemplateIcon.png</Icon>
     <TemplateID>c3d39876-f27b-4e9d-b8ae-d9660a4d6b6f</TemplateID>
     <ProjectType>CSharp</ProjectType>
     <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
