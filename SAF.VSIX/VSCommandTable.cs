@@ -12,11 +12,11 @@ namespace SAF.VSIX
     /// </summary>
     internal sealed partial class PackageGuids
     {
-        public const string SAFCommandPackageString = "50ea28c6-3f76-4641-a15e-de9fa78717cd";
-        public const string SAFCmdSetString = "1f5c3fe8-b14a-4f59-a6c4-ddd8c8ec6c99";
+        public const string SAFPackageString = "50ea28c6-3f76-4641-a15e-de9fa78717cd";
+        public const string SAFSubmenuCmdSetString = "1f5c3fe8-b14a-4f59-a6c4-ddd8c8ec6c99";
         public const string ImagesString = "5c1a2768-126b-46fd-a410-24a7bb518418";
-        public static Guid SAFCommandPackage = new Guid(SAFCommandPackageString);
-        public static Guid SAFCmdSet = new Guid(SAFCmdSetString);
+        public static Guid SAFPackage = new Guid(SAFPackageString);
+        public static Guid SAFSubmenuCmdSet = new Guid(SAFSubmenuCmdSetString);
         public static Guid Images = new Guid(ImagesString);
     }
     /// <summary>
@@ -24,9 +24,11 @@ namespace SAF.VSIX
     /// </summary>
     internal sealed partial class PackageIds
     {
-        public const int SAFMenuGroup = 0x1020;
-        public const int NewSSLCertificatesCommandId = 0x0100;
-        public const int ImportSSLCertificatesCommandId = 0x0101;
+        public const int SAFGroupForSubmenu = 0x1020;
+        public const int SAFGroupForCommands = 0x1021;
+        public const int SAFSubmenu = 0x0100;
+        public const int NewSSLCertificatesCommandId = 0x0101;
+        public const int ImportSSLCertificatesCommandId = 0x0102;
         public const int SAFCommand = 0x0001;
     }
 }

@@ -10,7 +10,7 @@ namespace SAF.VSIX.Commands
     internal sealed class ImportSSLCertificatesCommand
     {
         public const int CommandId = PackageIds.ImportSSLCertificatesCommandId;
-        public static readonly Guid CommandSet = new Guid(PackageGuids.SAFCmdSetString);
+        public static readonly Guid CommandSet = new Guid(PackageGuids.SAFSubmenuCmdSetString);
         public static ImportSSLCertificatesCommand Instance { get; private set; }
 
         private readonly AsyncPackage _package;

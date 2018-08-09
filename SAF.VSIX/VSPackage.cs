@@ -10,7 +10,7 @@ namespace SAF.VSIX
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [InstalledProductRegistration("#110", "#112", Vsix.Version, IconResourceID = 400)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [Guid(PackageGuids.SAFCommandPackageString)]
+    [Guid(PackageGuids.SAFPackageString)]
     public sealed class VSPackage : AsyncPackage
     {
         protected override async Task InitializeAsync(CancellationToken cancellationToken,

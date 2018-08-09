@@ -10,7 +10,7 @@ namespace SAF.VSIX.Commands
     internal sealed class NewSSLCertificatesCommand
     {
         public const int CommandId = PackageIds.NewSSLCertificatesCommandId;
-        public static readonly Guid CommandSet = new Guid(PackageGuids.SAFCmdSetString);
+        public static readonly Guid CommandSet = new Guid(PackageGuids.SAFSubmenuCmdSetString);
         public static NewSSLCertificatesCommand Instance { get; private set; }
 
         private readonly AsyncPackage _package;
