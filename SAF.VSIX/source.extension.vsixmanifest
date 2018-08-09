@@ -4,8 +4,8 @@
         <Identity Id="5962e87f-5192-4d26-91f3-62efd4012ff5" Version="1.0" Language="en-US" Publisher="Rosen Petrov" />
         <DisplayName>SAF Extension for Visual Studio</DisplayName>
         <Description xml:space="preserve">A Visual Studio Extension that brings SAF features into Visual Studio and highly simplifies the installation and maintenance of Sitecore Experience Platform.</Description>
-        <Icon>Resources\Icon.png</Icon>
-        <PreviewImage>Resources\Preview.png</PreviewImage>
+        <Icon>Resources\VSExtensionIcon.png</Icon>
+        <PreviewImage>Resources\VSExtensionPreview.png</PreviewImage>
         <Tags>sitecore, devops, installation</Tags>
     </Metadata>
     <Installation>

@@ -29,6 +29,6 @@ namespace SAF.VSIX
         public const int SAFSubmenu = 0x0100;
         public const int NewSSLCertificatesCommandId = 0x0101;
         public const int ImportSSLCertificatesCommandId = 0x0102;
-        public const int SAFCommand = 0x0001;
+        public const int SAFCommandIcon = 0x0001;
     }
 }

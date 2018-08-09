@@ -184,12 +184,12 @@
     </VSCTCompile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\SAFCommand.png" />
-    <Content Include="Resources\Icon.png">
+    <Content Include="Resources\SAFCommandIcon.png" />
+    <Content Include="Resources\VSExtensionIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="Resources\Preview.png">
+    <Content Include="Resources\VSExtensionPreview.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
