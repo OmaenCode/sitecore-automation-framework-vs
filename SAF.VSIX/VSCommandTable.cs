@@ -12,12 +12,12 @@ namespace SAF.VSIX
     /// </summary>
     internal sealed partial class PackageGuids
     {
-        public const string guidNewSSLCertificatesCommandPackageString = "50ea28c6-3f76-4641-a15e-de9fa78717cd";
-        public const string guidNewSSLCertificatesCommandPackageCmdSetString = "1f5c3fe8-b14a-4f59-a6c4-ddd8c8ec6c99";
-        public const string guidImagesString = "5c1a2768-126b-46fd-a410-24a7bb518418";
-        public static Guid guidNewSSLCertificatesCommandPackage = new Guid(guidNewSSLCertificatesCommandPackageString);
-        public static Guid guidNewSSLCertificatesCommandPackageCmdSet = new Guid(guidNewSSLCertificatesCommandPackageCmdSetString);
-        public static Guid guidImages = new Guid(guidImagesString);
+        public const string SAFCommandPackageString = "50ea28c6-3f76-4641-a15e-de9fa78717cd";
+        public const string SAFCmdSetString = "1f5c3fe8-b14a-4f59-a6c4-ddd8c8ec6c99";
+        public const string ImagesString = "5c1a2768-126b-46fd-a410-24a7bb518418";
+        public static Guid SAFCommandPackage = new Guid(SAFCommandPackageString);
+        public static Guid SAFCmdSet = new Guid(SAFCmdSetString);
+        public static Guid Images = new Guid(ImagesString);
     }
     /// <summary>
     /// Helper class that encapsulates all CommandIDs uses across VS Package.
@@ -26,6 +26,7 @@ namespace SAF.VSIX
     {
         public const int SAFMenuGroup = 0x1020;
         public const int NewSSLCertificatesCommandId = 0x0100;
-        public const int bmpPic1 = 0x0001;
+        public const int ImportSSLCertificatesCommandId = 0x0101;
+        public const int SAFCommand = 0x0001;
     }
 }
