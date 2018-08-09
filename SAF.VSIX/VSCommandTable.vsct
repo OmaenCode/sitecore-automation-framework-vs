@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+  <Commands package="guidNewSSLCertificatesCommandPackage">
+    <Groups>
+      <Group guid="guidNewSSLCertificatesCommandPackageCmdSet" id="SAFMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE"/>
+      </Group>
+    </Groups>
+    <Buttons>
+      <Button guid="guidNewSSLCertificatesCommandPackageCmdSet" id="NewSSLCertificatesCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidNewSSLCertificatesCommandPackageCmdSet" id="SAFMenuGroup" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Generate New SSL Certificates</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources\NewSSLCertificatesCommand.png" usedList="bmpPic1"/>
+    </Bitmaps>
+  </Commands>
+  <Symbols>
+    <GuidSymbol name="guidNewSSLCertificatesCommandPackage" value="{50ea28c6-3f76-4641-a15e-de9fa78717cd}" />
+    <GuidSymbol name="guidNewSSLCertificatesCommandPackageCmdSet" value="{1f5c3fe8-b14a-4f59-a6c4-ddd8c8ec6c99}">
+      <IDSymbol name="SAFMenuGroup" value="0x1020" />
+      <IDSymbol name="NewSSLCertificatesCommandId" value="0x0100" />
+    </GuidSymbol>
+    <GuidSymbol name="guidImages" value="{5c1a2768-126b-46fd-a410-24a7bb518418}" >
+      <IDSymbol name="bmpPic1" value="1" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
