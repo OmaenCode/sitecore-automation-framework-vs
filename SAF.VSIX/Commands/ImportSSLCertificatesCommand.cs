@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel.Design;
 using System.Globalization;
+using EnvDTE;
+using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
@@ -22,7 +24,7 @@ namespace SAF.VSIX.Commands
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
 
             var menuCommandID = new CommandID(CommandSet, CommandId);
-            var menuItem = new MenuCommand(Execute, menuCommandID);
+            var menuItem = new OleMenuCommand(ExecuteCallback, null, BeforeQueryStatusCallback, menuCommandID);
             commandService.AddCommand(menuItem);
         }
         
@@ -36,7 +38,7 @@ namespace SAF.VSIX.Commands
             Instance = new ImportSSLCertificatesCommand(package, commandService);
         }
 
-        private void Execute(object sender, EventArgs e)
+        private void ExecuteCallback(object sender, EventArgs e)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
             string message = string.Format(CultureInfo.CurrentCulture, 
@@ -51,6 +53,17 @@ namespace SAF.VSIX.Commands
                 OLEMSGICON.OLEMSGICON_INFO,
                 OLEMSGBUTTON.OLEMSGBUTTON_OK,
                 OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+        }
+
+        private async void BeforeQueryStatusCallback(object sender, EventArgs e)
+        {
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
+            var dte = await ServiceProvider.GetServiceAsync(typeof(DTE));
+            var selectedFiles = (Array)((DTE2)dte).ToolWindows.SolutionExplorer.SelectedItems;
+
+            var cmd = (OleMenuCommand)sender;
+            cmd.Visible = true;
         }
     }
 }

@@ -32,12 +32,11 @@ namespace SAF.VSIX.Commands
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
 
             var menuCommandID = new CommandID(CommandSet, CommandId);
-            var menuItem = new MenuCommand(Execute, menuCommandID);
+            var menuItem = new OleMenuCommand(ExecuteCallback, null, BeforeQueryStatusCallback, menuCommandID);
             commandService.AddCommand(menuItem);
         }
-       
 
-        private void Execute(object sender, EventArgs e)
+        private void ExecuteCallback(object sender, EventArgs e)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
             string message = string.Format(CultureInfo.CurrentCulture, 
@@ -52,6 +51,12 @@ namespace SAF.VSIX.Commands
                 OLEMSGICON.OLEMSGICON_INFO,
                 OLEMSGBUTTON.OLEMSGBUTTON_OK,
                 OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+        }
+
+        private void BeforeQueryStatusCallback(object sender, EventArgs e)
+        {
+            var cmd = (OleMenuCommand)sender;
+            cmd.Visible = false;
         }
     }
 }
