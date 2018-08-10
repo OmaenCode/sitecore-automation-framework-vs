@@ -65,11 +65,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="SSL\SSLConfiguration.json" />
-    <None Include="XM0\InstallConfiguration.json" />
-    <None Include="XM_SOLR\SolrConfiguration.json" />
-    <None Include="XP0\InstallConfiguration.json" />
-    <None Include="XP_SOLR\SolrConfiguration.json" />
+    <None Include="SSL\SitecoreSSLConfiguration.json" />
+    <None Include="XM0\SitecoreInstallConfiguration.json" />
+    <None Include="XM_SOLR\SitecoreSolrConfiguration.json" />
+    <None Include="XP0\SitecoreInstallConfiguration.json" />
+    <None Include="XP_SOLR\SitecoreSolrConfiguration.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="SSL\TemplateIcon.png" />

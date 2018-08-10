@@ -9,7 +9,6 @@
     </Groups>
     <Menus>
       <Menu guid="SAFSubmenuCmdSet" id="SAFSubmenu" type="Menu">
-        <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
           <ButtonText>SAF</ButtonText>
         </Strings>

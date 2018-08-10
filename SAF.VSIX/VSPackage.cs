@@ -22,6 +22,7 @@ namespace SAF.VSIX
             await base.InitializeAsync(cancellationToken, progress);
 
             await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+
             await NewSSLCertificatesCommand.InitializeAsync(this);
             await ImportSSLCertificatesCommand.InitializeAsync(this);
         }

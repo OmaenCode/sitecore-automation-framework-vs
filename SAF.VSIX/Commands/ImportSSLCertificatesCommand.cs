@@ -5,6 +5,7 @@ using EnvDTE;
 using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using SAF.VSIX.Services;
 using Task = System.Threading.Tasks.Task;
 
 namespace SAF.VSIX.Commands
@@ -22,23 +23,20 @@ namespace SAF.VSIX.Commands
         {
             _package = package ?? throw new ArgumentNullException(nameof(package));
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
-
             var menuCommandID = new CommandID(CommandSet, CommandId);
-            var menuItem = new OleMenuCommand(ExecuteCallback, null, BeforeQueryStatusCallback, menuCommandID);
+            var menuItem = new OleMenuCommand(Execute, null, SetVisibility, menuCommandID);
             commandService.AddCommand(menuItem);
         }
         
         public static async Task InitializeAsync(AsyncPackage package)
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-
             OleMenuCommandService commandService = 
                 await package.GetServiceAsync((typeof(IMenuCommandService))) as OleMenuCommandService;
-
             Instance = new ImportSSLCertificatesCommand(package, commandService);
         }
 
-        private void ExecuteCallback(object sender, EventArgs e)
+        private void Execute(object sender, EventArgs e)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
             string message = string.Format(CultureInfo.CurrentCulture, 
@@ -55,15 +53,15 @@ namespace SAF.VSIX.Commands
                 OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
         }
 
-        private async void BeforeQueryStatusCallback(object sender, EventArgs e)
+        private async void SetVisibility(object sender, EventArgs e)
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-
             var dte = await ServiceProvider.GetServiceAsync(typeof(DTE));
-            var selectedFiles = (Array)((DTE2)dte).ToolWindows.SolutionExplorer.SelectedItems;
+            if (dte == null || !(dte is DTE2 dte2) || !(sender is OleMenuCommand cmd))
+                return;
 
-            var cmd = (OleMenuCommand)sender;
-            cmd.Visible = true;
+            var solutionExplorerService = new SolutionExplorerService();
+            var visibilityService = new CommandVisibilityService(solutionExplorerService);
+            cmd.Visible = await visibilityService.ShouldBeVisibleAsync(dte2, JsonConfigurationNames.SitecoreSSLConfiguration);
         }
     }
 }

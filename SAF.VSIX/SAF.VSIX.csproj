@@ -57,6 +57,9 @@
   <ItemGroup>
     <Compile Include="Commands\ImportSSLCertificatesCommand.cs" />
     <Compile Include="Commands\NewSSLCertificatesCommand.cs" />
+    <Compile Include="JsonConfigurationNames.cs" />
+    <Compile Include="Services\CommandVisibilityService.cs" />
+    <Compile Include="Services\SolutionExplorerService.cs" />
     <Compile Include="VSCommandTable.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

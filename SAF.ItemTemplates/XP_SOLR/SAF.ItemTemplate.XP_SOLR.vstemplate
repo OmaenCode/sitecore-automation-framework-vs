@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
   <TemplateData>
-    <Name>XP Solr Install Configuration</Name>
+    <Name>Sitecore XP Solr Configuration</Name>
     <Description>Solr configurations for Sitecore installation.</Description>
     <Icon>TemplateIcon.png</Icon>
     <TemplateID>81f14a58-819b-4f0e-b3de-f7c1372cf1bc</TemplateID>
     <ProjectType>CSharp</ProjectType>
     <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
     <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
-    <DefaultName>SolrConfiguration.json</DefaultName>
+    <DefaultName>SitecoreSolrConfiguration.json</DefaultName>
   </TemplateData>
   <TemplateContent>
     <References />
-    <ProjectItem>SolrConfiguration.json</ProjectItem>
+    <ProjectItem>SitecoreSolrConfiguration.json</ProjectItem>
   </TemplateContent>
 </VSTemplate>
