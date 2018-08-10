@@ -1,19 +1,17 @@
-﻿using EnvDTE;
-using EnvDTE80;
-using Microsoft.VisualStudio.Shell;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SAF.VSIX.Services
+﻿namespace SAF.VSIX.Services
 {
+    using EnvDTE;
+    using EnvDTE80;
+    using Microsoft.VisualStudio.Shell;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     internal class SolutionExplorerService
     {
-        public async Task<List<ProjectItem>> GetSelectedItemsAsync(DTE2 dte)
+        public List<ProjectItem> GetSelectedItems(DTE2 dte)
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            ThreadHelper.ThrowIfNotOnUIThread();
 
             var result = new List<ProjectItem>();
 

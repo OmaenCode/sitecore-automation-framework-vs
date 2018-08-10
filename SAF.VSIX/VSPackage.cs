@@ -1,30 +1,23 @@
-﻿using System;
-using System.ComponentModel.Design;
-using System.Runtime.InteropServices;
-using System.Threading;
-using Microsoft.VisualStudio;
-using Microsoft.VisualStudio.Shell;
-using SAF.VSIX.Commands;
-using Task = System.Threading.Tasks.Task;
-
-namespace SAF.VSIX
+﻿namespace SAF.VSIX
 {
-    [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
+    using System;
+    using System.Runtime.InteropServices;
+    using Microsoft.VisualStudio;
+    using Microsoft.VisualStudio.Shell;
+    using SAF.VSIX.Commands;
+
+    [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", Vsix.Version, IconResourceID = 400)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [Guid(PackageGuids.SAFCommandsPackageString)]
-    [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionExists_string, PackageAutoLoadFlags.BackgroundLoad)]
-    public sealed class VSPackage : AsyncPackage
+    [ProvideAutoLoad(VSConstants.UICONTEXT.CSharpProject_string, PackageAutoLoadFlags.BackgroundLoad)]
+    public sealed class VSPackage : Package
     {
-        protected override async Task InitializeAsync(CancellationToken cancellationToken,
-            IProgress<ServiceProgressData> progress)
+        protected override void Initialize()
         {
-            await base.InitializeAsync(cancellationToken, progress);
-
-            await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-
-            await NewSSLCertificatesCommand.InitializeAsync(this);
-            await ImportSSLCertificatesCommand.InitializeAsync(this);
+            new NewSSLCertificatesCommand(this);
+            new ImportSSLCertificatesCommand(this);
+            base.Initialize();
         }
     }
 }

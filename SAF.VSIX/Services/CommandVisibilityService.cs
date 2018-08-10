@@ -1,11 +1,10 @@
-﻿using EnvDTE80;
-using Microsoft.VisualStudio.Shell;
-using System;
-using System.IO;
-using System.Threading.Tasks;
-
-namespace SAF.VSIX.Services
+﻿namespace SAF.VSIX.Services
 {
+    using EnvDTE80;
+    using Microsoft.VisualStudio.Shell;
+    using System;
+    using System.IO;
+
     internal class CommandVisibilityService
     {
         private readonly SolutionExplorerService _solutionExplorerService;
@@ -15,14 +14,14 @@ namespace SAF.VSIX.Services
             _solutionExplorerService = solutionExplorerService;
         }
 
-        public async Task<bool> ShouldBeVisibleAsync(DTE2 dte, string jsonName)
+        public bool ShouldBeVisible(DTE2 dte, string jsonName)
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            ThreadHelper.ThrowIfNotOnUIThread();
 
             if (dte == null || string.IsNullOrWhiteSpace(jsonName))
                 return false;
 
-            var selectedItems = await _solutionExplorerService.GetSelectedItemsAsync(dte);
+            var selectedItems = _solutionExplorerService.GetSelectedItems(dte);
             if (selectedItems.Count != 1)
                 return false;
 

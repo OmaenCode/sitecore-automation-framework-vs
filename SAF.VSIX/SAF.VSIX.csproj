@@ -55,6 +55,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\ImportSSLCertificatesCommand.cs" />
     <Compile Include="Commands\NewSSLCertificatesCommand.cs" />
     <Compile Include="JsonConfigurationNames.cs" />
