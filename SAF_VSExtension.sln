@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAF.ItemTemplates", "SAF.It
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAF.VSIX", "SAF.VSIX\SAF.VSIX.csproj", "{65B5D6CE-FA5F-4F26-BB70-302840AF0A73}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAF.PowerShell", "SAF.PowerShell\SAF.PowerShell.csproj", "{A8F73146-BAAE-49F0-8CDE-BD4244F6F9EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{65B5D6CE-FA5F-4F26-BB70-302840AF0A73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65B5D6CE-FA5F-4F26-BB70-302840AF0A73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65B5D6CE-FA5F-4F26-BB70-302840AF0A73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8F73146-BAAE-49F0-8CDE-BD4244F6F9EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8F73146-BAAE-49F0-8CDE-BD4244F6F9EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8F73146-BAAE-49F0-8CDE-BD4244F6F9EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8F73146-BAAE-49F0-8CDE-BD4244F6F9EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

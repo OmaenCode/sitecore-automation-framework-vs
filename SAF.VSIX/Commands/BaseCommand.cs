@@ -9,17 +9,19 @@
 
     internal abstract class BaseCommand
     {
-        protected BaseCommand(IServiceProvider serviceProvider)
-        {
-            ServiceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
-            SolutionExplorerService = new SolutionExplorerService();
-            RegisterCommand();
-        }
-
         public abstract int CommandId { get; }
         public abstract string JsonConfiguration { get; }
         protected IServiceProvider ServiceProvider { get; }
         protected SolutionExplorerService SolutionExplorerService { get; }
+        protected OutputWindowService OutputWindowService { get; }
+
+        protected BaseCommand(IServiceProvider serviceProvider)
+        {
+            ServiceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
+            SolutionExplorerService = new SolutionExplorerService();
+            OutputWindowService = new OutputWindowService();
+            RegisterCommand();
+        }
 
         protected virtual void SetVisibility(object sender, EventArgs e)
         {
