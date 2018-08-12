@@ -3,6 +3,7 @@
     using EnvDTE;
     using EnvDTE80;
     using Microsoft.VisualStudio.Shell;
+    using SAF.PowerShell.Tasks;
     using SAF.VSIX.Services;
     using System;
     using System.ComponentModel.Design;
@@ -11,6 +12,7 @@
     {
         public abstract int CommandId { get; }
         public abstract string JsonConfiguration { get; }
+        public abstract BasePowerShellTask PowerShellTask { get; }
         protected IServiceProvider ServiceProvider { get; }
         protected SolutionExplorerService SolutionExplorerService { get; }
         protected OutputWindowService OutputWindowService { get; }
@@ -33,7 +35,10 @@
             cmd.Visible = visibilityService.ShouldBeVisible(dte2, JsonConfiguration);
         }
 
-        protected abstract void Execute(object sender, EventArgs e);
+        protected virtual void Execute(object sender, EventArgs e)
+        {
+            PowerShellTask.Run();
+        }
 
         private void RegisterCommand()
         {
