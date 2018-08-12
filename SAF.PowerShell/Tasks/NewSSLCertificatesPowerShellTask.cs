@@ -2,6 +2,6 @@
 {
     public class NewSSLCertificatesPowerShellTask : BasePowerShellTask
     {
-        protected override string Script => "E:\\Temp.ps1";
+        protected override string Script => "";
     }
 }

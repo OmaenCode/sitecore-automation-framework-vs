@@ -2,11 +2,11 @@
 {
     using Microsoft.VisualStudio.Shell;
     using Microsoft.VisualStudio.Shell.Interop;
-    using SAF.PowerShell.Tasks;
+    using SAF.PowerShell.Providers;
     using System;
 
     /// <summary>
-    /// TODO: Investigate UI warning.
+    /// TODO: Investigate UI warning. It throws exception if suggested fix is applied.
     /// </summary>
     internal class OutputWindowService
     {

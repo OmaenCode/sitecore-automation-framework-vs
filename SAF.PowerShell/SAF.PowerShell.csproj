@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Providers\PowerShellProvider.cs" />
     <Compile Include="Tasks\BasePowerShellTask.cs" />
     <Compile Include="Tasks\NewSSLCertificatesPowerShellTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

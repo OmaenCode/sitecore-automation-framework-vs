@@ -3,6 +3,7 @@
     using EnvDTE;
     using EnvDTE80;
     using Microsoft.VisualStudio.Shell;
+    using SAF.PowerShell.Providers;
     using SAF.PowerShell.Tasks;
     using SAF.VSIX.Services;
     using System;
@@ -10,35 +11,42 @@
 
     internal abstract class BaseCommand
     {
-        public abstract int CommandId { get; }
-        public abstract string JsonConfiguration { get; }
-        protected IServiceProvider ServiceProvider { get; }
-        protected SolutionExplorerService SolutionExplorerService { get; }
-        protected OutputWindowService OutputWindowService { get; }
+        protected abstract int CommandId { get; }
+        protected abstract string JsonConfiguration { get; }
+        protected abstract BasePowerShellTask PowerShellTask {get;}
+        private IServiceProvider _serviceProvider { get; }
+        private SolutionExplorerService _solutionExplorerService { get; }
+        private OutputWindowService _outputWindowService { get; }
+        private PowerShellProvider _powerShellProvider { get; }
 
         protected BaseCommand(IServiceProvider serviceProvider)
         {
-            ServiceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
-            SolutionExplorerService = new SolutionExplorerService();
-            OutputWindowService = new OutputWindowService();
+            _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
+            _solutionExplorerService = new SolutionExplorerService();
+            _outputWindowService = new OutputWindowService();
+            _powerShellProvider = new PowerShellProvider();
             RegisterCommand();
         }
 
         protected virtual void SetVisibility(object sender, EventArgs e)
         {
-            var dte = ServiceProvider.GetService(typeof(DTE));
+            var dte = _serviceProvider.GetService(typeof(DTE));
             if (dte == null || !(dte is DTE2 dte2) || !(sender is OleMenuCommand cmd))
                 return;
 
-            var visibilityService = new CommandVisibilityService(SolutionExplorerService);
+            var visibilityService = new CommandVisibilityService(_solutionExplorerService);
             cmd.Visible = visibilityService.ShouldBeVisible(dte2, JsonConfiguration);
         }
 
-        protected abstract void Execute(object sender, EventArgs e);
+        protected virtual void Execute(object sender, EventArgs e)
+        {
+            _powerShellProvider.StreamUpdated += _outputWindowService.WriteLine;
+            _powerShellProvider.RunTask(PowerShellTask);
+        }
 
         private void RegisterCommand()
         {
-            if (ServiceProvider.GetService((typeof(IMenuCommandService))) is OleMenuCommandService commandService)
+            if (_serviceProvider.GetService((typeof(IMenuCommandService))) is OleMenuCommandService commandService)
             {
                 var menuCommandID = new CommandID(PackageGuids.SAFSubmenuCmdSet, CommandId);
                 var menuItem = new OleMenuCommand(Execute, null, SetVisibility, menuCommandID);

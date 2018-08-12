@@ -6,17 +6,12 @@
 
     internal sealed class NewSSLCertificatesCommand : BaseCommand
     {
-        public override int CommandId => PackageIds.NewSSLCertificatesCommandId;
-        public override string JsonConfiguration => JsonConfigurationNames.SitecoreSSLConfiguration;
+        protected override int CommandId => PackageIds.NewSSLCertificatesCommandId;
+        protected override string JsonConfiguration => JsonConfigurationNames.SitecoreSSLConfiguration;
+
+        protected override BasePowerShellTask PowerShellTask => new NewSSLCertificatesPowerShellTask();
 
         public NewSSLCertificatesCommand(Package package) : base(package)
         { }
-
-        protected override void Execute(object sender, EventArgs e)
-        {
-            var powerShellTask = new NewSSLCertificatesPowerShellTask();
-            powerShellTask.StreamUpdated += OutputWindowService.WriteLine;
-            powerShellTask.Run();
-        }
     }
 }
