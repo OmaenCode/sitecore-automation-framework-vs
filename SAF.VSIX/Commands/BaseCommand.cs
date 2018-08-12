@@ -12,7 +12,6 @@
     {
         public abstract int CommandId { get; }
         public abstract string JsonConfiguration { get; }
-        public abstract BasePowerShellTask PowerShellTask { get; }
         protected IServiceProvider ServiceProvider { get; }
         protected SolutionExplorerService SolutionExplorerService { get; }
         protected OutputWindowService OutputWindowService { get; }
@@ -35,10 +34,7 @@
             cmd.Visible = visibilityService.ShouldBeVisible(dte2, JsonConfiguration);
         }
 
-        protected virtual void Execute(object sender, EventArgs e)
-        {
-            PowerShellTask.Run();
-        }
+        protected abstract void Execute(object sender, EventArgs e);
 
         private void RegisterCommand()
         {

@@ -46,8 +46,6 @@
     <Compile Include="Tasks\BasePowerShellTask.cs" />
     <Compile Include="Tasks\NewSSLCertificatesPowerShellTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\PowerShellEventArgs.cs" />
-    <Compile Include="Providers\PowerShellProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

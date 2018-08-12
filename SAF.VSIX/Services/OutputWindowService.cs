@@ -2,7 +2,7 @@
 {
     using Microsoft.VisualStudio.Shell;
     using Microsoft.VisualStudio.Shell.Interop;
-    using SAF.PowerShell.Providers;
+    using SAF.PowerShell.Tasks;
     using System;
 
     /// <summary>

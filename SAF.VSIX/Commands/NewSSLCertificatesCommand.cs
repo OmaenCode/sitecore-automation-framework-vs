@@ -9,10 +9,14 @@
         public override int CommandId => PackageIds.NewSSLCertificatesCommandId;
         public override string JsonConfiguration => JsonConfigurationNames.SitecoreSSLConfiguration;
 
-        public override BasePowerShellTask PowerShellTask 
-            => new NewSSLCertificatesPowerShellTask(OutputWindowService.WriteLine);
-
         public NewSSLCertificatesCommand(Package package) : base(package)
         { }
+
+        protected override void Execute(object sender, EventArgs e)
+        {
+            var powerShellTask = new NewSSLCertificatesPowerShellTask();
+            powerShellTask.StreamUpdated += OutputWindowService.WriteLine;
+            powerShellTask.Run();
+        }
     }
 }
