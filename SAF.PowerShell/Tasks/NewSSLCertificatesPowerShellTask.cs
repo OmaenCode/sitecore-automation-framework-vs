@@ -2,6 +2,10 @@
 {
     public class NewSSLCertificatesPowerShellTask : BasePowerShellTask
     {
+        public NewSSLCertificatesPowerShellTask(string jsonConfigurationAbsolutePath) 
+            : base(jsonConfigurationAbsolutePath)
+        { }
+
         protected override string Script => "";
     }
 }

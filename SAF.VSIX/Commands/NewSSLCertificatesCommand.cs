@@ -9,7 +9,7 @@
         protected override int CommandId => PackageIds.NewSSLCertificatesCommandId;
         protected override string JsonConfiguration => JsonConfigurationNames.SitecoreSSLConfiguration;
 
-        protected override BasePowerShellTask PowerShellTask => new NewSSLCertificatesPowerShellTask();
+        protected override BasePowerShellTask PowerShellTask => new NewSSLCertificatesPowerShellTask(string.Empty);
 
         public NewSSLCertificatesCommand(Package package) : base(package)
         { }

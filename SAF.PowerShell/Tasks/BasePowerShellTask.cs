@@ -2,23 +2,23 @@
 {
     public abstract class BasePowerShellTask
     {
-        private string _script;
+        private string _finalScript;
 
         protected abstract string Script { get; }
 
-        protected BasePowerShellTask()
+        protected BasePowerShellTask(string jsonConfigurationAbsolutePath)
         {
-            Initialize();
+            Initialize(jsonConfigurationAbsolutePath);
         }
 
         public string GetScript()
         {
-            return _script += Script;
+            return _finalScript += Script;
         }
 
-        private void Initialize()
+        private void Initialize(string jsonConfigurationAbsolutePath)
         {
-            _script = @"Write-Output ""YEAHHH!!!""";
+            _finalScript = @"Write-Output ""YEAHHH!!!""";
         }
     }
 }
