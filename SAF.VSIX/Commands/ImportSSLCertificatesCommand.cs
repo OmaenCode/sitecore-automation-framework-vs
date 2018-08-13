@@ -1,6 +1,5 @@
 ﻿namespace SAF.VSIX.Commands
 {
-    using System;
     using Microsoft.VisualStudio.Shell;
     using SAF.PowerShell.Tasks;
 
@@ -9,7 +8,8 @@
         protected override int CommandId => PackageIds.ImportSSLCertificatesCommandId;
         protected override string JsonConfiguration => JsonConfigurationNames.SitecoreSSLConfiguration;
 
-        protected override BasePowerShellTask PowerShellTask => throw new NotImplementedException();
+        protected override BasePowerShellTask PowerShellTask 
+            => new ImportSSLCertificatesTask(DirectoryOfSelectedItem);
 
         public ImportSSLCertificatesCommand(Package package) : base(package)
         { }
