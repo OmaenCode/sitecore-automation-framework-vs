@@ -5,9 +5,6 @@
     using SAF.PowerShell.Providers;
     using System;
 
-    /// <summary>
-    /// TODO: Investigate UI warning. It throws exception if suggested fix is applied.
-    /// </summary>
     internal class OutputWindowService
     {
         private const string WindowTitle = "SAF - Output";
@@ -18,6 +15,8 @@
         {
             get
             {
+                ThreadHelper.ThrowIfNotOnUIThread();
+
                 if (_outputWindow != null
                     || !(Package.GetGlobalService(typeof(SVsOutputWindow)) is IVsOutputWindow ouputWindow))
                     return _outputWindow;
@@ -29,9 +28,11 @@
                 return _outputWindow;
             }
         }
-
-        public void WriteLine(object source, PowerShellEventArgs args)
+  
+        public async void WriteLineAsync(object source, PowerShellEventArgs args)
         {
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
             if (string.IsNullOrWhiteSpace(args?.Message))
                 return;
 

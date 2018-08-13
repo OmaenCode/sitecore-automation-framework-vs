@@ -3,12 +3,13 @@
     using SAF.PowerShell.Tasks;
     using System;
     using System.Management.Automation;
+    using System.Threading.Tasks;
 
     public class PowerShellProvider
     {
         public event EventHandler<PowerShellEventArgs> StreamUpdated;
 
-        public void RunTask(BasePowerShellTask task)
+        public async Task RunTaskAsync(BasePowerShellTask task)
         {
             if (task == null)
                 return;
@@ -20,24 +21,24 @@
             if (string.IsNullOrWhiteSpace(script))
                 return;
 
-            using (PowerShell PowerShellInstance = PowerShell.Create())
+            using (PowerShell ps = PowerShell.Create())
             {
-                PowerShellInstance.AddScript(script);
+                ps.AddScript(script);
 
-                PowerShellInstance.Streams.Error.DataAdded += (sender, args) =>
+                ps.Streams.Error.DataAdded += (sender, args) =>
                 {
                     ErrorRecord error = ((PSDataCollection<ErrorRecord>)sender)[args.Index];
                     OnStreamUpdated($"ERROR: {error}");
                 };
 
-                PowerShellInstance.Streams.Warning.DataAdded += (sender, args) =>
+                ps.Streams.Warning.DataAdded += (sender, args) =>
                 {
                     WarningRecord warning = ((PSDataCollection<WarningRecord>)sender)[args.Index];
                     OnStreamUpdated($"WARNING: {warning}");
                 };
 
-                var result = new PSDataCollection<PSObject>();
-                result.DataAdded += (sender, args) =>
+                var regularOutput = new PSDataCollection<PSObject>();
+                regularOutput.DataAdded += (sender, args) =>
                 {
                     PSObject output = ((PSDataCollection<PSObject>)sender)[args.Index];
                     OnStreamUpdated($"{output}");
@@ -45,7 +46,8 @@
 
                 try
                 {
-                    PowerShellInstance.Invoke(null, result);
+                    await Task<PSDataCollection<PSObject>>.Factory.FromAsync(
+                        ps.BeginInvoke<PSObject, PSObject>(null, regularOutput), ps.EndInvoke);
                 }
                 catch (Exception ex)
                 {

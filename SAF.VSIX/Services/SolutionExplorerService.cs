@@ -5,10 +5,22 @@
     using Microsoft.VisualStudio.Shell;
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
 
     internal class SolutionExplorerService
     {
+        public string GetDirectoryOfSelectedItem(DTE2 dte)
+        {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
+            var selectedItems = GetSelectedItems(dte);
+            if (selectedItems.Count != 1)
+                return string.Empty;
+           
+            return Path.GetDirectoryName(selectedItems[0].FileNames[1]);
+        }
+
         public List<ProjectItem> GetSelectedItems(DTE2 dte)
         {
             ThreadHelper.ThrowIfNotOnUIThread();

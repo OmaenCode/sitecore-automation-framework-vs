@@ -1,6 +1,5 @@
 ﻿namespace SAF.VSIX.Commands
 {
-    using System;
     using Microsoft.VisualStudio.Shell;
     using SAF.PowerShell.Tasks;
 
@@ -9,7 +8,8 @@
         protected override int CommandId => PackageIds.NewSSLCertificatesCommandId;
         protected override string JsonConfiguration => JsonConfigurationNames.SitecoreSSLConfiguration;
 
-        protected override BasePowerShellTask PowerShellTask => new NewSSLCertificatesPowerShellTask(string.Empty);
+        protected override BasePowerShellTask PowerShellTask 
+            => new NewSSLCertificatesPowerShellTask(DirectoryOfSelectedItem);
 
         public NewSSLCertificatesCommand(Package package) : base(package)
         { }

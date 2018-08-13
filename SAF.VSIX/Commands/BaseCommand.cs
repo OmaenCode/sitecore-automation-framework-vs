@@ -13,7 +13,19 @@
     {
         protected abstract int CommandId { get; }
         protected abstract string JsonConfiguration { get; }
-        protected abstract BasePowerShellTask PowerShellTask {get;}
+        protected abstract BasePowerShellTask PowerShellTask { get; }
+        protected string DirectoryOfSelectedItem
+        {
+            get
+            {
+                var dte = _serviceProvider.GetService(typeof(DTE));
+                if (dte == null || !(dte is DTE2 dte2))
+                    return string.Empty;
+
+                return _solutionExplorerService.GetDirectoryOfSelectedItem(dte2);
+            }
+        }
+
         private IServiceProvider _serviceProvider { get; }
         private SolutionExplorerService _solutionExplorerService { get; }
         private OutputWindowService _outputWindowService { get; }
@@ -38,10 +50,11 @@
             cmd.Visible = visibilityService.ShouldBeVisible(dte2, JsonConfiguration);
         }
 
-        protected virtual void Execute(object sender, EventArgs e)
+        protected virtual async void Execute(object sender, EventArgs e)
         {
-            _powerShellProvider.StreamUpdated += _outputWindowService.WriteLine;
-            _powerShellProvider.RunTask(PowerShellTask);
+            _powerShellProvider.StreamUpdated -= _outputWindowService.WriteLineAsync;
+            _powerShellProvider.StreamUpdated += _outputWindowService.WriteLineAsync;
+            await _powerShellProvider.RunTaskAsync(PowerShellTask);
         }
 
         private void RegisterCommand()
