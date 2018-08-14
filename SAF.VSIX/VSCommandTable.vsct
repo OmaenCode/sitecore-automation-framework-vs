@@ -33,6 +33,42 @@
           <ButtonText>Import SSL Certificates</ButtonText>
         </Strings>
       </Button>
+      <Button guid="SAFSubmenuCmdSet" id="InstallSolrCommandId" type="Button">
+        <Parent guid="SAFSubmenuCmdSet" id="SAFSubmenu" />
+        <Icon guid="Images" id="SAFCommandIcon" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Install Solr</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="SAFSubmenuCmdSet" id="UninstallSolrCommandId" type="Button">
+        <Parent guid="SAFSubmenuCmdSet" id="SAFSubmenu" />
+        <Icon guid="Images" id="SAFCommandIcon" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Uninstall Solr</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="SAFSubmenuCmdSet" id="InstallSitecoreCommandId" type="Button">
+        <Parent guid="SAFSubmenuCmdSet" id="SAFSubmenu" />
+        <Icon guid="Images" id="SAFCommandIcon" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Install Sitecore</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="SAFSubmenuCmdSet" id="UninstallSitecoreCommandId" type="Button">
+        <Parent guid="SAFSubmenuCmdSet" id="SAFSubmenu" />
+        <Icon guid="Images" id="SAFCommandIcon" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Uninstall Sitecore</ButtonText>
+        </Strings>
+      </Button>
     </Buttons>
     <Bitmaps>
       <Bitmap guid="Images" href="Resources\SAFCommandIcon.png" usedList="SAFCommandIcon" />
@@ -54,6 +90,18 @@
     <CommandPlacement guid="SAFSubmenuCmdSet" id="ImportSSLCertificatesCommandId" priority="0x0002" >
       <Parent guid="SAFSubmenuCmdSet" id="SAFGroupForCommands"/>
     </CommandPlacement>
+    <CommandPlacement guid="SAFSubmenuCmdSet" id="InstallSolrCommandId" priority="0x0003" >
+      <Parent guid="SAFSubmenuCmdSet" id="SAFGroupForCommands"/>
+    </CommandPlacement>
+    <CommandPlacement guid="SAFSubmenuCmdSet" id="UninstallSolrCommandId" priority="0x0004" >
+      <Parent guid="SAFSubmenuCmdSet" id="SAFGroupForCommands"/>
+    </CommandPlacement>
+    <CommandPlacement guid="SAFSubmenuCmdSet" id="InstallSitecoreCommandId" priority="0x0005" >
+      <Parent guid="SAFSubmenuCmdSet" id="SAFGroupForCommands"/>
+    </CommandPlacement>
+    <CommandPlacement guid="SAFSubmenuCmdSet" id="UninstallSitecoreCommandId" priority="0x0006" >
+      <Parent guid="SAFSubmenuCmdSet" id="SAFGroupForCommands"/>
+    </CommandPlacement>
   </CommandPlacements>
   <Symbols>
     <GuidSymbol name="SAFCommandsPackage" value="{50ea28c6-3f76-4641-a15e-de9fa78717cd}" />
@@ -63,6 +111,10 @@
       <IDSymbol name="SAFSubmenu" value="0x0100" />
       <IDSymbol name="NewSSLCertificatesCommandId" value="0x0101" />
       <IDSymbol name="ImportSSLCertificatesCommandId" value="0x0102" />
+      <IDSymbol name="InstallSolrCommandId" value="0x0103" />
+      <IDSymbol name="UninstallSolrCommandId" value="0x0104" />
+      <IDSymbol name="InstallSitecoreCommandId" value="0x0105" />
+      <IDSymbol name="UninstallSitecoreCommandId" value="0x0106" />
     </GuidSymbol>
     <GuidSymbol name="Images" value="{5c1a2768-126b-46fd-a410-24a7bb518418}">
       <IDSymbol name="SAFCommandIcon" value="1" />

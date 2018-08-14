@@ -45,9 +45,14 @@
   <ItemGroup>
     <Compile Include="Providers\PowerShellProvider.cs" />
     <Compile Include="Tasks\BasePowerShellTask.cs" />
+    <Compile Include="Tasks\ImportSSLCertificatesPowerShellTask.cs" />
     <Compile Include="Tasks\ImportSSLCertificatesTask.cs" />
+    <Compile Include="Tasks\InstallSitecorePowerShellTask.cs" />
+    <Compile Include="Tasks\InstallSolrPowerShellTask.cs" />
     <Compile Include="Tasks\NewSSLCertificatesPowerShellTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tasks\UninstallSitecorePowerShellTask.cs" />
+    <Compile Include="Tasks\UninstallSolrPowerShellTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

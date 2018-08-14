@@ -29,6 +29,10 @@ namespace SAF.VSIX
         public const int SAFSubmenu = 0x0100;
         public const int NewSSLCertificatesCommandId = 0x0101;
         public const int ImportSSLCertificatesCommandId = 0x0102;
+        public const int InstallSolrCommandId = 0x0103;
+        public const int UninstallSolrCommandId = 0x0104;
+        public const int InstallSitecoreCommandId = 0x0105;
+        public const int UninstallSitecoreCommandId = 0x0106;
         public const int SAFCommandIcon = 0x0001;
     }
 }

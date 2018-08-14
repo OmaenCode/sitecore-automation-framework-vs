@@ -17,6 +17,10 @@
         {
             new NewSSLCertificatesCommand(this);
             new ImportSSLCertificatesCommand(this);
+            new InstallSolrCommand(this);
+            new UninstallSolrCommand(this);
+            new InstallSitecoreCommand(this);
+            new UninstallSitecoreCommand(this);
             base.Initialize();
         }
     }

@@ -58,7 +58,11 @@
   <ItemGroup>
     <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\ImportSSLCertificatesCommand.cs" />
+    <Compile Include="Commands\InstallSitecoreCommand.cs" />
+    <Compile Include="Commands\InstallSolrCommand.cs" />
     <Compile Include="Commands\NewSSLCertificatesCommand.cs" />
+    <Compile Include="Commands\UninstallSitecoreCommand.cs" />
+    <Compile Include="Commands\UninstallSolrCommand.cs" />
     <Compile Include="JsonConfigurationNames.cs" />
     <Compile Include="Services\CommandVisibilityService.cs" />
     <Compile Include="Services\OutputWindowService.cs" />
