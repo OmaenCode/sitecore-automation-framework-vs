@@ -1,6 +1,7 @@
 ﻿namespace SAF.PowerShell.Providers
 {
-    using SAF.PowerShell.Tasks;
+    using SAF.PowerShell.Commands;
+    using SAF.PowerShell.Services;
     using System;
     using System.Management.Automation;
     using System.Threading.Tasks;
@@ -9,21 +10,30 @@
     {
         public event EventHandler<PowerShellEventArgs> StreamUpdated;
 
-        public async Task RunTaskAsync(BasePowerShellTask task)
+        private readonly ScriptsService _scriptsService;
+
+        public PowerShellProvider()
         {
-            if (task == null)
-                return;
+            _scriptsService = new ScriptsService();
+        }
 
-            var script = task.GetScript();
-            if (string.IsNullOrWhiteSpace(script))
-                return;
 
-            if (string.IsNullOrWhiteSpace(script))
+        public async Task RunTaskAsync(SAFPowerShellCommand command, string contextDirectory)
+        {
+            if (string.IsNullOrWhiteSpace(command?.Name) || string.IsNullOrWhiteSpace(contextDirectory))
                 return;
 
             using (PowerShell ps = PowerShell.Create())
             {
-                ps.AddScript(script);
+                // Ensure 64-bit PowerShell
+                ps.AddScript(
+                    $@"& ""$env:WINDIR\sysnative\windowspowershell\v1.0\powershell.exe"" -NonInteractive -NoProfile -File ""{_scriptsService.Wrapper}"" -ContextDirectory {contextDirectory} -SAFCommand {command.Name}");
+
+                ps.Streams.Progress.DataAdded += (sender, args) => 
+                {
+                    PSDataCollection<ProgressRecord> progress = (PSDataCollection<ProgressRecord>)sender;
+                    OnStreamUpdated($"PROGRESS: {progress[args.Index].PercentComplete}% complete");
+                };
 
                 ps.Streams.Error.DataAdded += (sender, args) =>
                 {

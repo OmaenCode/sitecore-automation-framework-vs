@@ -1,15 +1,13 @@
 ﻿namespace SAF.VSIX.Commands
 {
     using Microsoft.VisualStudio.Shell;
-    using SAF.PowerShell.Tasks;
+    using SAF.PowerShell.Commands;
 
     internal class UninstallSitecoreCommand : BaseCommand
     {
         protected override int CommandId => PackageIds.UninstallSitecoreCommandId;
         protected override string JsonConfiguration => JsonConfigurationNames.SitecoreInstallConfiguration;
-
-        protected override BasePowerShellTask PowerShellTask
-            => new UninstallSitecorePowerShellTask(DirectoryOfSelectedItem);
+        protected override SAFPowerShellCommand SAFPowerShellCommand => new UninstallSitecore();
 
         public UninstallSitecoreCommand(Package package) : base(package)
         { }

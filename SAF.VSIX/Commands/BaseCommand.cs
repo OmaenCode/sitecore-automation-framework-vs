@@ -3,8 +3,8 @@
     using EnvDTE;
     using EnvDTE80;
     using Microsoft.VisualStudio.Shell;
+    using SAF.PowerShell.Commands;
     using SAF.PowerShell.Providers;
-    using SAF.PowerShell.Tasks;
     using SAF.VSIX.Services;
     using System;
     using System.ComponentModel.Design;
@@ -13,8 +13,9 @@
     {
         protected abstract int CommandId { get; }
         protected abstract string JsonConfiguration { get; }
-        protected abstract BasePowerShellTask PowerShellTask { get; }
-        protected string DirectoryOfSelectedItem
+        protected abstract SAFPowerShellCommand SAFPowerShellCommand { get; }
+
+        private string ContextDirectrory
         {
             get
             {
@@ -25,7 +26,6 @@
                 return _solutionExplorerService.GetDirectoryOfSelectedItem(dte2);
             }
         }
-
         private IServiceProvider _serviceProvider { get; }
         private SolutionExplorerService _solutionExplorerService { get; }
         private OutputWindowService _outputWindowService { get; }
@@ -54,7 +54,7 @@
         {
             _powerShellProvider.StreamUpdated -= _outputWindowService.WriteLineAsync;
             _powerShellProvider.StreamUpdated += _outputWindowService.WriteLineAsync;
-            await _powerShellProvider.RunTaskAsync(PowerShellTask);
+            await _powerShellProvider.RunTaskAsync(SAFPowerShellCommand, ContextDirectrory);
         }
 
         private void RegisterCommand()
